@@ -1,0 +1,75 @@
+version: 8
+center:
+  - 139.76442
+  - 35.6875
+zoom: 13.955760822635057
+bearing: 60
+pitch: 60
+sources:
+  satellite:
+    type: raster
+    tiles:
+      - https://maps.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg
+    tileSize: 256
+    maxzoom: 18
+    minzoom: 2
+    attribution: >-
+      <a href='https://maps.gsi.go.jp/development/ichiran.html'
+      target='_blank'>地理院タイル</a>
+  openmaptiles:
+    url: https://tile.openstreetmap.jp/data/japan.json
+    type: vector
+  gsibv-vectortile-source-1-4-16:
+    type: vector
+    tiles:
+      - https://cyberjapandata.gsi.go.jp/xyz/experimental_bvmap/{z}/{x}/{y}.pbf
+    maxzoom: 16
+    minzoom: 4
+    attribution: >-
+      <a href='https://maps.gsi.go.jp/vector/'
+      target='_blank'>地理院地図Vector（仮称）</a>
+  10b512-7-113-50:
+    type: raster-dem
+    tiles:
+      - https://optgeo.github.io/10b512-7-113-50/zxy/{z}/{x}/{y}.webp
+    tileSize: 512
+    maxzoom: 13
+    minzoom: 3
+    attribution: >-
+      <a href='https://maps.gsi.go.jp/development/ichiran.html'
+      target='_blank'>地理院タイル</a>
+  et10b:
+    type: raster-dem
+    tiles:
+      - https://x.optgeo.org/et10b/et512/{z}/{x}/{y}.webp
+    tileSize: 512
+    maxzoom: 13
+    attribution: >-
+      <a href='https://maps.gsi.go.jp/development/ichiran.html'
+      target='_blank'>地理院タイル</a>
+sprite: https://sprites.geolonia.com/basic
+glyphs: https://maps.gsi.go.jp/xyz/noto-jp/{fontstack}/{range}.pbf
+layers:
+  - !!inc/file layers/background.yml
+  - !!inc/file layers/satellite.yml
+  - !!inc/file layers/water-boundary-bg.yml
+  - !!inc/file layers/water-boundary.yml
+  - !!inc/file layers/buildings4302.yml
+  - !!inc/file layers/buildings4301.yml
+  - !!inc/file layers/buildings3111.yml
+  - !!inc/file layers/buildings3112.yml
+  - !!inc/file layers/buildings3101.yml
+  - !!inc/file layers/buildings3102.yml
+  - !!inc/file layers/buildings3103.yml
+  - !!inc/file layers/road-label-outdoors.yml
+  - !!inc/file layers/road-intersection.yml
+  - !!inc/file layers/path-pedestrian-label.yml
+#  - !!inc/file layers/waterway-label.yml
+  - !!inc/file layers/natural-line-label.yml
+  - !!inc/file layers/natural-point-label.yml
+  - !!inc/file layers/water-line-label.yml
+  - !!inc/file layers/water-point-label.yml
+  - !!inc/file layers/poi-label.yml
+  - !!inc/file layers/airport-label.yml
+terrain:
+  source: et10b

@@ -1,0 +1,82 @@
+minzoom: 13
+layout:
+  text-font:
+    - NotoSansCJKjp-Regular
+  text-max-angle: 30
+  symbol-spacing:
+    - interpolate
+    - - linear
+      - 1
+    - - zoom
+    - 15
+    - 250
+    - 17
+    - 400
+  text-size:
+    - interpolate
+    - - linear
+    - - zoom
+    - 13
+    - 12
+    - 18
+    - 16
+  symbol-placement: line
+  text-pitch-alignment: viewport
+  text-field:
+    - coalesce
+    - - get
+      - - match
+        - - get
+          - name_script
+        - - Myanmar
+          - Khmer
+          - Tibetan
+          - Lao
+          - Bengali
+          - Thai
+          - Ethiopic
+          - Devanagari
+          - Gujarati
+          - Gurmukhi
+          - Kannada
+          - Malayalam
+          - Oriya
+          - Sinhala
+          - Tamil
+          - Telugu
+        - name_en
+        - name
+    - - get
+      - name
+filter:
+  - all
+  - - match
+    - - get
+      - class
+    - - canal
+      - river
+      - stream
+    - true
+    - - disputed_canal
+      - disputed_river
+      - disputed_stream
+    - - all
+      - - '=='
+        - - get
+          - disputed
+        - 'true'
+      - true
+    - false
+  - - '=='
+    - - geometry-type
+    - LineString
+type: symbol
+source: openmaptiles
+id: waterway-label
+paint:
+  text-color: hsl(196, 69%, 98%)
+  text-halo-color: hsla(237, 6%, 21%, 0.66)
+  text-halo-width: 1
+  text-halo-blur: 1
+source-layer: waterway
+maxzoom: 18

@@ -1,0 +1,62 @@
+minzoom: 8
+layout:
+  text-line-height: 1.1
+  text-size:
+    - step
+    - - get
+      - sizerank
+    - 18
+    - 9
+    - 12
+  icon-image:
+    - step
+    - - get
+      - sizerank
+    - - concat
+      - - get
+        - maki
+      - '-15'
+    - 9
+    - - concat
+      - - get
+        - maki
+      - '-11'
+  text-font:
+    - NotoSansCJKjp-Regular
+  text-offset:
+    - 0
+    - 0.75
+  text-rotation-alignment: viewport
+  text-anchor: top
+  text-field:
+    - coalesce
+    - - get
+      - name
+    - - get
+      - name
+  text-letter-spacing: 0.01
+  text-max-width: 9
+filter:
+  - match
+  - - get
+    - class
+  - - military
+    - civil
+  - true
+  - - disputed_military
+    - disputed_civil
+  - - all
+    - - '=='
+      - - get
+        - disputed
+      - 'true'
+    - true
+  - false
+type: symbol
+source: openmaptiles
+id: airport-label
+paint:
+  text-color: hsl(0, 0%, 100%)
+  text-halo-color: hsl(0, 20%, 3%)
+  text-halo-width: 1
+source-layer: aerodrome_label

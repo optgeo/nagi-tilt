@@ -1,0 +1,109 @@
+id: water-line-label
+type: symbol
+source: openmaptiles
+source-layer: water
+filter:
+  - all
+  - - match
+    - - get
+      - class
+    - - bay
+      - ocean
+      - reservoir
+      - sea
+      - water
+    - true
+    - - disputed_bay
+      - disputed_ocean
+      - disputed_reservoir
+      - disputed_sea
+      - disputed_water
+    - - all
+      - - '=='
+        - - get
+          - disputed
+        - 'true'
+      - true
+    - false
+  - - '=='
+    - - geometry-type
+    - LineString
+layout:
+  text-size:
+    - interpolate
+    - - linear
+    - - zoom
+    - 7
+    - - step
+      - - get
+        - sizerank
+      - 20
+      - 6
+      - 18
+      - 12
+      - 12
+    - 10
+    - - step
+      - - get
+        - sizerank
+      - 15
+      - 9
+      - 12
+    - 18
+    - - step
+      - - get
+        - sizerank
+      - 15
+      - 9
+      - 14
+  text-max-angle: 30
+  text-letter-spacing:
+    - match
+    - - get
+      - class
+    - ocean
+    - 0.25
+    - - sea
+      - bay
+    - 0.15
+    - 0
+  text-font:
+    - NotoSansCJKjp-Regular
+  symbol-placement: line-center
+  text-pitch-alignment: viewport
+  text-field:
+    - coalesce
+    - - get
+      - - match
+        - - get
+          - name_script
+        - - Myanmar
+          - Khmer
+          - Tibetan
+          - Lao
+          - Bengali
+          - Thai
+          - Ethiopic
+          - Devanagari
+          - Gujarati
+          - Gurmukhi
+          - Kannada
+          - Malayalam
+          - Oriya
+          - Sinhala
+          - Tamil
+          - Telugu
+        - name_en
+        - name
+    - - get
+      - name
+paint:
+  text-color:
+    - match
+    - - get
+      - class
+    - - bay
+      - ocean
+      - sea
+    - hsl(196, 46%, 70%)
+    - hsl(196, 18%, 90%)

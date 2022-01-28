@@ -1,0 +1,169 @@
+minzoom: 6
+layout:
+  text-size:
+    - step
+    - - zoom
+    - - step
+      - - get
+        - sizerank
+      - 18
+      - 5
+      - 12
+    - 17
+    - - step
+      - - get
+        - sizerank
+      - 18
+      - 13
+      - 12
+  icon-image:
+    - step
+    - - zoom
+    - - case
+      - - has
+        - maki_beta
+      - - image
+        - - concat
+          - - get
+            - maki_beta
+          - '-11'
+      - - image
+        - - concat
+          - - get
+            - maki
+          - '-11'
+    - 15
+    - - case
+      - - has
+        - maki_beta
+      - - image
+        - - concat
+          - - get
+            - maki_beta
+          - '-15'
+      - - image
+        - - concat
+          - - get
+            - maki
+          - '-15'
+  text-font:
+    - NotoSansCJKjp-Regular
+  text-offset:
+    - step
+    - - zoom
+    - - step
+      - - get
+        - sizerank
+      - - literal
+        - - 0
+          - 0
+      - 5
+      - - literal
+        - - 0
+          - 0.75
+    - 17
+    - - step
+      - - get
+        - sizerank
+      - - literal
+        - - 0
+          - 0
+      - 13
+      - - literal
+        - - 0
+          - 0.75
+  text-anchor:
+    - step
+    - - zoom
+    - - step
+      - - get
+        - sizerank
+      - center
+      - 5
+      - top
+    - 17
+    - - step
+      - - get
+        - sizerank
+      - center
+      - 13
+      - top
+  text-field:
+    - coalesce
+    - - get
+      - - match
+        - - get
+          - name_script
+        - - Myanmar
+          - Khmer
+          - Tibetan
+          - Lao
+          - Bengali
+          - Thai
+          - Ethiopic
+          - Devanagari
+          - Gujarati
+          - Gurmukhi
+          - Kannada
+          - Malayalam
+          - Oriya
+          - Sinhala
+          - Tamil
+          - Telugu
+        - name_en
+        - name
+    - - get
+      - name
+filter:
+  - match
+  - - get
+    - class
+  - - town_hall
+    - golf
+    - park
+    - railway
+    - aerialway
+    - college
+    - lodging
+    - school
+    - harbor
+    - hospital
+    - stadium
+    - castle
+  - true
+  - false
+type: symbol
+source: openmaptiles
+id: poi-label
+paint:
+  icon-opacity:
+    - step
+    - - zoom
+    - - step
+      - - get
+        - sizerank
+      - 0
+      - 5
+      - 1
+    - 17
+    - - step
+      - - get
+        - sizerank
+      - 0
+      - 13
+      - 1
+  text-halo-color:
+    - match
+    - - get
+      - class
+    - park
+    - hsl(94, 100%, 0%)
+    - education
+    - hsl(0, 5%, 0%)
+    - medical
+    - hsl(0, 5%, 3%)
+    - rgb(0, 0, 0)
+  text-halo-width: 0.5
+  text-halo-blur: 0.5
+  text-color: hsl(0, 0%, 100%)
+source-layer: poi

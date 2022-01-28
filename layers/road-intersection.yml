@@ -1,0 +1,60 @@
+minzoom: 15
+layout:
+  text-field:
+    - coalesce
+    - - get
+      - - match
+        - - get
+          - name_script
+        - - Myanmar
+          - Khmer
+          - Tibetan
+          - Lao
+          - Bengali
+          - Thai
+          - Ethiopic
+          - Devanagari
+          - Gujarati
+          - Gurmukhi
+          - Kannada
+          - Malayalam
+          - Oriya
+          - Sinhala
+          - Tamil
+          - Telugu
+        - name_en
+        - name
+    - - get
+      - name
+  icon-image: intersection
+  icon-text-fit: both
+  icon-text-fit-padding:
+    - 1
+    - 2
+    - 1
+    - 2
+  text-size:
+    - interpolate
+    - - exponential
+      - 1.2
+    - - zoom
+    - 15
+    - 9
+    - 18
+    - 12
+  text-font:
+    - NotoSansCJKjp-Regular
+filter:
+  - all
+  - - '=='
+    - - get
+      - class
+    - intersection
+  - - has
+    - name
+type: symbol
+source: openmaptiles
+id: road-intersection
+paint:
+  text-color: rgb(67, 67, 67)
+source-layer: transportation_name

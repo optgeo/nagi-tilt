@@ -1,0 +1,82 @@
+minzoom: 12
+layout:
+  text-size:
+    - interpolate
+    - - linear
+    - - zoom
+    - 10
+    - - match
+      - - get
+        - class
+      - pedestrian
+      - 9
+      - 6.5
+    - 18
+    - - match
+      - - get
+        - class
+      - pedestrian
+      - 14
+      - 13
+  text-max-angle: 30
+  text-font:
+    - NotoSansCJKjp-Regular
+  symbol-placement: line
+  text-padding: 1
+  text-rotation-alignment: map
+  text-pitch-alignment: viewport
+  text-field:
+    - coalesce
+    - - get
+      - - match
+        - - get
+          - name_script
+        - - Myanmar
+          - Khmer
+          - Tibetan
+          - Lao
+          - Bengali
+          - Thai
+          - Ethiopic
+          - Devanagari
+          - Gujarati
+          - Gurmukhi
+          - Kannada
+          - Malayalam
+          - Oriya
+          - Sinhala
+          - Tamil
+          - Telugu
+        - name_en
+        - name
+    - - get
+      - name
+  text-letter-spacing: 0.01
+  visibility: none
+filter:
+  - step
+  - - zoom
+  - - match
+    - - get
+      - class
+    - - pedestrian
+    - true
+    - false
+  - 15
+  - - match
+    - - get
+      - class
+    - - path
+      - pedestrian
+    - true
+    - false
+type: symbol
+source: openmaptiles
+id: path-pedestrian-label
+paint:
+  text-color: hsl(0, 0%, 100%)
+  text-halo-color: hsl(303, 8%, 55%)
+  text-halo-width: 1
+  text-halo-blur: 1
+source-layer: transportation_name
+maxzoom: 18

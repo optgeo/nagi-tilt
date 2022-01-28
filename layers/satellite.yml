@@ -1,0 +1,7 @@
+id: satellite
+type: raster
+source: satellite
+paint:
+  raster-contrast: 0.5
+  raster-brightness-max: 0.89
+  raster-fade-duration: 500

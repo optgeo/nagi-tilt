@@ -27,7 +27,12 @@ const showMap = async (texts) => {
     container: 'map',
     hash: true,
     style: 'https://optgeo.github.io/nagi/style.json',
-    maxZoom: 19.6
+    maxZoom: 19.6,
+    projection: {
+      name: 'lambertConformalConic',
+      center: [140, 45],
+      parallels: [60, 30]
+    }
   })
   map.addControl(new mapgl.NavigationControl())
   map.addControl(new mapgl.ScaleControl({

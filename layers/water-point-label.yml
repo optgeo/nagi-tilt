@@ -1,0 +1,112 @@
+id: water-point-label
+type: symbol
+source: openmaptiles
+source-layer: water
+filter:
+  - all
+  - - match
+    - - get
+      - class
+    - - bay
+      - ocean
+      - reservoir
+      - sea
+      - water
+    - true
+    - - disputed_bay
+      - disputed_ocean
+      - disputed_reservoir
+      - disputed_sea
+      - disputed_water
+    - - all
+      - - '=='
+        - - get
+          - disputed
+        - 'true'
+      - true
+    - false
+  - - '=='
+    - - geometry-type
+    - Point
+layout:
+  text-line-height: 1.3
+  text-size:
+    - interpolate
+    - - linear
+    - - zoom
+    - 7
+    - - step
+      - - get
+        - sizerank
+      - 20
+      - 6
+      - 15
+      - 12
+      - 12
+    - 10
+    - - step
+      - - get
+        - sizerank
+      - 15
+      - 9
+      - 12
+  text-font:
+    - NotoSansCJKjp-Regular
+  text-field:
+    - coalesce
+    - - get
+      - - match
+        - - get
+          - name_script
+        - - Myanmar
+          - Khmer
+          - Tibetan
+          - Lao
+          - Bengali
+          - Thai
+          - Ethiopic
+          - Devanagari
+          - Gujarati
+          - Gurmukhi
+          - Kannada
+          - Malayalam
+          - Oriya
+          - Sinhala
+          - Tamil
+          - Telugu
+        - name_en
+        - name
+    - - get
+      - name
+  text-letter-spacing:
+    - match
+    - - get
+      - class
+    - ocean
+    - 0.25
+    - - bay
+      - sea
+    - 0.15
+    - 0.01
+  text-max-width:
+    - match
+    - - get
+      - class
+    - ocean
+    - 4
+    - sea
+    - 5
+    - - bay
+      - water
+    - 7
+    - 10
+paint:
+  text-color:
+    - match
+    - - get
+      - class
+    - - bay
+      - ocean
+      - sea
+    - hsl(196, 46%, 70%)
+    - hsl(196, 18%, 90%)
